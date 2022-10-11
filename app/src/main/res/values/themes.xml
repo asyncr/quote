@@ -17,18 +17,10 @@
 
     <style name="Quote">
         <item name="android:textColor">@color/dark_1</item>
-        <item name ="android:gravity">center</item>
-        <item name ="android:padding">16dp</item>
-        <item name ="android:textStyle">italic</item>
-        <item name ="android:textSize">25sp</item>
     </style>
 
     <style name="Author">
         <item name="android:textColor">@color/gray_4</item>
-        <item name ="android:gravity">center</item>
-        <item name ="android:padding">16dp</item>
-        <item name ="android:textStyle">normal</item>
-        <item name ="android:textSize">18sp</item>
     </style>
 
 </resources>

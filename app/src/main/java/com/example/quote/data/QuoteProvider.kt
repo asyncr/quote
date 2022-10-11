@@ -8,8 +8,11 @@ class QuoteProvider {
     companion object {
         fun random(): QuoteModel {
             val position = (quotes.indices).random()
-            return quotes[position]
+            val quoteObj = quotes[position]
+            return QuoteModel(addDoubleQuotes(quoteObj.quote), quoteObj.author)
         }
+
+        private fun addDoubleQuotes(quote: String) =  "\"$quote\""
 
         private val quotes = listOf(
             QuoteModel(

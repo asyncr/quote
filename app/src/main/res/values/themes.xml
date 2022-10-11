@@ -15,7 +15,6 @@
         <item name="android:background">@color/white</item>
     </style>
 
-    <!--Crear un estilo para un titulo-->
     <style name="Quote">
         <item name="android:textColor">@color/dark_1</item>
         <item name ="android:gravity">center</item>
@@ -29,7 +28,7 @@
         <item name ="android:gravity">center</item>
         <item name ="android:padding">16dp</item>
         <item name ="android:textStyle">normal</item>
-        <item name ="android:textSize">20sp</item>
+        <item name ="android:textSize">18sp</item>
     </style>
 
 </resources>

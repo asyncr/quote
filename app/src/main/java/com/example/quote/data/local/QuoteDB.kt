@@ -5,16 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.quotes.data.local.daos.QuoteDao
-import com.example.quotes.data.local.entities.QuoteEntity
+import com.example.quote.data.local.daos.QuoteDao
+import com.example.quote.data.local.entities.QuoteEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(
-    entities = [QuoteEntity::class],
-    version = 1
-)
+@Database(entities = [QuoteEntity::class],version = 1,exportSchema = false)
 abstract class QuoteDB : RoomDatabase() {
 
     abstract fun quoteDao(): QuoteDao

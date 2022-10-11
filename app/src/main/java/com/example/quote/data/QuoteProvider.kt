@@ -1,6 +1,7 @@
 package com.example.quote.data
 
-import com.example.quotes.domain.model.QuoteModel
+import com.example.quote.domain.model.QuoteModel
+
 
 class QuoteProvider {
 

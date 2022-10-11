@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import com.example.quote.databinding.ActivityMainBinding
-import com.example.quotes.presentation.viewmodel.QuoteViewModel
+import com.example.quote.presentation.viewmodel.QuoteViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //setSupportActionBar(binding.toolbar)
+        supportActionBar?.hide()
     }
 
 }

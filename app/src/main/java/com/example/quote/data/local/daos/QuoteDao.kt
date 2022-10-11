@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.quotes.data.local.entities.QuoteEntity
+import com.example.quote.data.local.entities.QuoteEntity
 import kotlinx.coroutines.flow.Flow
 
 

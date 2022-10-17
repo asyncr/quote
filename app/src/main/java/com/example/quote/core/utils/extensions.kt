@@ -4,18 +4,19 @@ import com.example.quote.data.local.entities.QuoteEntity
 import com.example.quote.domain.model.QuoteModel
 
 fun QuoteEntity.toQuoteModel() = QuoteModel(
-    id=id,
+    id = id,
     quote = quote,
     author = author,
 )
+
 fun QuoteModel.toEntity() = QuoteEntity(
-    id= id,
+    id = id,
     quote = quote,
     author = author,
 )
 
-fun List<QuoteModel>.toListQuoteEntity () =
-    map {it.toEntity() }
+fun List<QuoteModel>.toListQuoteEntity() =
+    map { it.toEntity() }
 
-fun List<QuoteEntity>.toListQuoteModel () =
-    map {it.toQuoteModel() }
+fun List<QuoteEntity>.toListQuoteModel() =
+    map { it.toQuoteModel() }

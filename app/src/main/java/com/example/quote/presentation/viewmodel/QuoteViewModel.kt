@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,7 +22,6 @@ class QuoteViewModel
 
 
     fun randomQuote() {
-        //Lanza la corrutina en el viewModelScope
         viewModelScope.launch {
             quoteModelRandomMutableStateFlow.value = getQuoteRandomUseCase.getQuoteRandom().first()
             //_quoteModel.value = GetQuoteUseCase(quoteDAO).getQuote(1).first()

@@ -12,10 +12,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class ContextModule {
     @Provides
-    @Singleton //Solo va a existir una instancia de este objeto
-    fun provideContext(application: QuotesApp): Context {
-        //El contexto donde se va a ejecutar la aplicación
-        return application.applicationContext
-    }
+    @Singleton
+    fun provideContext(application: QuotesApp) = application.applicationContext
 
 }

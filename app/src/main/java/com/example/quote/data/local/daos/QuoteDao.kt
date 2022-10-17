@@ -7,7 +7,6 @@ import androidx.room.Query
 import com.example.quote.data.local.entities.QuoteEntity
 import kotlinx.coroutines.flow.Flow
 
-
 @Dao
 interface QuoteDao {
     @Insert
@@ -30,5 +29,4 @@ interface QuoteDao {
 
     @Query("DELETE FROM quote WHERE id=:quoteId ")
     suspend fun delete(quoteId: Int)
-
 }

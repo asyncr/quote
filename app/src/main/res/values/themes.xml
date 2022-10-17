@@ -20,7 +20,7 @@
     </style>
 
     <style name="Author">
-        <item name="android:textColor">@color/gray_4</item>
+        <item name="android:textColor">@color/gray_1</item>
     </style>
 
 </resources>

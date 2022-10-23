@@ -11,6 +11,9 @@ import javax.inject.Singleton
 class QuoteRepositoryImpl @Inject constructor
     (private val localDataSource: QuoteLocalDataSource) :
     QuoteRepository {
+    override suspend fun getLatestId():Int {
+        return localDataSource.getLatestId()
+    }
 
     override suspend fun getQuoteRandom(): Flow<QuoteModel> {
         return localDataSource.getQuoteRandom()
@@ -20,5 +23,16 @@ class QuoteRepositoryImpl @Inject constructor
         return localDataSource.getQuote(quoteId)
     }
 
+    override suspend fun addQuote(quoteModel: QuoteModel):Long{
+        return localDataSource.insert(quoteModel)
+    }
+
+    override suspend fun deleteQuote(id:Int):Int {
+        return localDataSource.deleteQuote(id)
+    }
+
+    override suspend fun getAllQuote(): Flow<List<QuoteModel>> {
+        return localDataSource.getQuotes()
+    }
 
 }

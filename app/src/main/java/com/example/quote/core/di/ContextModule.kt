@@ -14,5 +14,4 @@ class ContextModule {
     @Provides
     @Singleton
     fun provideContext(application: QuotesApp) = application.applicationContext
-
 }

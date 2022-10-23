@@ -9,8 +9,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface QuoteDao {
-    @Insert
-    suspend fun insert(quote: QuoteEntity)
+    //Inserta o actualiza un registro en la base de datos si ya existe
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(quote: QuoteEntity):Long //Retorna el id del registro insertado
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(quotes: List<QuoteEntity>)
@@ -28,5 +29,8 @@ interface QuoteDao {
     suspend fun deleteAll()
 
     @Query("DELETE FROM quote WHERE id=:quoteId ")
-    suspend fun delete(quoteId: Int)
+    suspend fun delete(quoteId: Int): Int //Retorna el número de registros eliminados
+
+    @Query("SELECT MAX(id) FROM quote")
+    suspend fun getLatestId(): Int
 }

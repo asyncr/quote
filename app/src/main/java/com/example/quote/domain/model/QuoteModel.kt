@@ -1,7 +1,9 @@
 package com.example.quote.domain.model
 
+import android.os.Parcelable
+
 data class QuoteModel(
-    val id: Int,
-    val quote: String,
+    var id: Int,
+    var quote: String,
     val author: String
 )

@@ -1,7 +1,9 @@
 package com.example.quote
 
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.quote.domain.model.QuoteModel
 
 import org.junit.Test
 import org.junit.runner.RunWith

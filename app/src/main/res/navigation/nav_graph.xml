@@ -19,13 +19,13 @@
         android:label="fragment_delete_quote"
         tools:layout="@layout/fragment_delete_quote" />
     <fragment
-        android:id="@+id/searchQuote"
-        android:name="com.example.quote.presentation.ui.fragments.list.SearchQuote"
+        android:id="@+id/listQuote"
+        android:name="com.example.quote.presentation.ui.fragments.list.ListQuote"
         android:label="fragment_search_quote"
         tools:layout="@layout/fragment_search_quote" />
     <fragment
         android:id="@+id/quote"
-        android:name="com.example.quote.presentation.ui.fragments.list.Quote"
+        android:name="com.example.quote.presentation.ui.fragments.list.QuoteItem"
         android:label="fragment_quote"
         tools:layout="@layout/fragment_quote" />
 </navigation>

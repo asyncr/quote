@@ -1,13 +1,7 @@
 package com.example.quote
 
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.example.quote.domain.QuoteRepository
 import com.example.quote.domain.model.QuoteModel
-import com.example.quote.presentation.viewmodel.QuoteViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -24,12 +18,12 @@ class ExampleUnitTest {
     }
     //Test of the app if it is working
 
-    val quoteModel = QuoteModel(0, "Test Quote", "Test Author")
+    val quoteItemModel = QuoteModel(0, "Test QuoteItem", "Test Author")
 
     @Test
     fun testQuoteModel() {
-        assertEquals(quoteModel.quote, "Test Quote")
-        assertEquals(quoteModel.author, "Test Author")
+        assertEquals(quoteItemModel.quote, "Test QuoteItem")
+        assertEquals(quoteItemModel.author, "Test Author")
     }
 
 }

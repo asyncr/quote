@@ -13,5 +13,5 @@ import javax.inject.Singleton
 class ContextModule {
     @Provides
     @Singleton
-    fun provideContext(application: QuotesApp) = application.applicationContext
+    fun provideContext(application: QuotesApp): Context? = application.applicationContext
 }

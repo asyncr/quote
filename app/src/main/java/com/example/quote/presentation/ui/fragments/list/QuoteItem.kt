@@ -9,7 +9,7 @@ import com.example.quote.R
 import com.example.quote.databinding.FragmentQuoteBinding
 
 
-class Quote : Fragment() {
+class QuoteItem : Fragment() {
     private var _binding: FragmentQuoteBinding? = null
     private val binding get() = _binding!!
 
@@ -32,7 +32,7 @@ class Quote : Fragment() {
 
     private fun replacementFragment() {
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.host_fragment, SearchQuote()).commit()
+            .replace(R.id.host_fragment, ListQuote()).commit()
     }
 
     override fun onDestroyView() {

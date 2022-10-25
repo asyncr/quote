@@ -15,8 +15,6 @@ fun QuoteModel.toEntity() = QuoteEntity(
     author = author,
 )
 
-fun List<QuoteModel>.toListQuoteEntity() =
-    map { it.toEntity() }
+fun List<QuoteModel>.toListQuoteEntity() = map { it.toEntity() }
 
-fun List<QuoteEntity>.toListQuoteModel() =
-    map { it.toQuoteModel() }
+fun List<QuoteEntity>.toListQuoteModel() = map { it.toQuoteModel() }

@@ -7,21 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.quote.R
 import com.example.quote.databinding.FragmentHomeBinding
-import com.example.quote.databinding.FragmentSearchQuoteBinding
-import com.example.quote.presentation.viewmodel.QuoteViewModel
+import com.example.quote.presentation.viewmodel.QuoteRandomViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class Home : Fragment() {
-    private val quoteViewModel: QuoteViewModel by viewModels()
+    private val quoteViewModel: QuoteRandomViewModel by viewModels()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,14 +26,11 @@ class Home : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         observer()
         quoteViewModel.randomQuote()
-        binding.viewContainer.setOnClickListener {
-            quoteViewModel.randomQuote()
-        }
+        binding.viewContainer.setOnClickListener { quoteViewModel.randomQuote() }
         return binding.root
     }
 
     fun observer() {
-
         lifecycleScope.launch {
             quoteViewModel.quoteModel.collect {
                 binding.tvQuote.text = it.quote
@@ -46,6 +38,8 @@ class Home : Fragment() {
             }
         }
     }
-
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -3,7 +3,6 @@ package com.example.quote.presentation.view
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -18,8 +17,7 @@ import com.example.quote.databinding.ActivityMainBinding
 import com.example.quote.presentation.ui.fragments.add.AddQuote
 import com.example.quote.presentation.ui.fragments.delete.DeleteQuote
 import com.example.quote.presentation.ui.fragments.home.Home
-import com.example.quote.presentation.ui.fragments.list.SearchQuote
-import com.example.quote.presentation.viewmodel.QuoteViewModel
+import com.example.quote.presentation.ui.fragments.list.ListQuote
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     private fun navigationAnimation(binding: ActivityMainBinding) {
         with(binding) {
             drawer_layout = drawerLayout
-            id.host_fragment?.let {
+            id.host_fragment.let {
                 navController = Navigation.findNavController(this@MainActivity, it)
             }
             toolbar.setNavigationOnClickListener { drawerLayout.openDrawer(GravityCompat.START) }
@@ -49,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 when (idI) {
                     id.nav_home -> replacementFragment(Home())
                     id.nav_add -> replacementFragment(AddQuote())
-                    id.nav_filter -> replacementFragment(SearchQuote())
+                    id.nav_filter -> replacementFragment(ListQuote())
                     id.nav_del -> replacementFragment(DeleteQuote())
                 }
                 binding.toolbar.title = title

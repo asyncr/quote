@@ -37,6 +37,9 @@
         <item name="android:textColor">@color/purple_699</item>
         <item name="android:textColorHint">@color/gray_2</item>
     </style>
+    <style name="Drawer">
+        <item name="background">@color/white_900</item>
+    </style>
 
 
     <style name="floatingButton">

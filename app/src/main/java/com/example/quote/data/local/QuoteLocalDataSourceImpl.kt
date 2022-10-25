@@ -21,7 +21,7 @@ class QuoteLocalDataSourceImpl @Inject constructor(private val quoteDao: QuoteDa
     }
 
     override fun getQuoteRandom(): Flow<QuoteModel> {
-        return quoteDao.getQuoteRandom().map { it.toQuoteModel() }
+        return quoteDao.getQuoteRandom().map { it!!.toQuoteModel() }
     }
 
     override suspend fun deleteQuote(id: Int):Int {

@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     style="@style/Frag"
-    tools:context=".presentation.ui.fragments.list.Quote">
+    tools:context=".presentation.ui.fragments.list.QuoteItem">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

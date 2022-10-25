@@ -5,28 +5,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.quote.R
 import com.example.quote.databinding.FragmentSearchQuoteBinding
 import com.example.quote.domain.model.QuoteModel
 import com.example.quote.presentation.recycler.adapter.QuoteAdapter
 import com.example.quote.presentation.recycler.adapter.QuoteClickListener
-import com.example.quote.presentation.viewmodel.QuoteViewModel
+import com.example.quote.presentation.viewmodel.GetAllQuotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchQuote : Fragment(), QuoteClickListener {
-    private val quoteViewModel: QuoteViewModel by viewModels()
+class ListQuote : Fragment(), QuoteClickListener {
+    private val quoteViewModel: GetAllQuotesViewModel by viewModels()
     private var _binding: FragmentSearchQuoteBinding? = null
     private val binding get() = _binding!!
-    private var flag = true
+
     private var animator: ValueAnimator? = null
     private var adapterRV: QuoteAdapter? = null
 
@@ -34,8 +32,11 @@ class SearchQuote : Fragment(), QuoteClickListener {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSearchQuoteBinding.inflate(inflater, container, false)
+        quoteViewModel.getAllQuotes()
         observer()
-        animationButton()
+        with(binding) {
+            Animation.animationButton(rvQuotes, tvAddQuote, animator)
+        }
         return binding.root
     }
 
@@ -49,7 +50,6 @@ class SearchQuote : Fragment(), QuoteClickListener {
 
     private fun observer() {
         lifecycleScope.launch {
-            quoteViewModel.getAllQuote()
             quoteViewModel.quoteModelList.collect {
                 gridLayoutManager(it.shuffled())
                 filter(it)
@@ -59,7 +59,7 @@ class SearchQuote : Fragment(), QuoteClickListener {
 
     private fun gridLayoutManager(list: List<QuoteModel>) {
         binding.rvQuotes.apply {
-            adapterRV = QuoteAdapter(list, this@SearchQuote)
+            adapterRV = QuoteAdapter(list, this@ListQuote)
             adapter = adapterRV
             layoutManager = GridLayoutManager(context, 1)
         }
@@ -73,7 +73,7 @@ class SearchQuote : Fragment(), QuoteClickListener {
             putString("quote", quote)
             putString("author", author)
         }
-        val fragment = Quote()
+        val fragment = QuoteItem()
         fragment.arguments = bundle
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.host_fragment, fragment).commit()
@@ -83,40 +83,4 @@ class SearchQuote : Fragment(), QuoteClickListener {
         super.onDestroyView()
         _binding = null
     }
-
-    private fun animationButton() {
-        binding.rvQuotes.also {
-            it.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    if (animator == null) {
-                        animator = createAnimation(binding.tvAddQuote)
-                    }
-                    when {
-                        dy > 0 && flag -> {
-                            animator?.start()
-                            flag = !flag
-                        }
-                        dy < 0 && !flag -> {
-                            animator?.reverse()
-                            flag = !flag
-                        }
-                    }
-                }
-            })
-        }
-    }
-
-    fun createAnimation(tvAddQuote: TextView): ValueAnimator {
-        val initSize = tvAddQuote.measuredWidth
-        val animator = ValueAnimator.ofInt(initSize, 0)
-        animator.duration = 250
-        animator.addUpdateListener {
-            val value = it.animatedValue as Int
-            tvAddQuote.layoutParams.width = value
-            tvAddQuote.requestLayout()
-        }
-        return animator
-    }
-
 }

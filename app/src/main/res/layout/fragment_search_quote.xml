@@ -3,19 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/viewContainer"
-    style="@style/Frag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragments.list.SearchQuote">
-
+    style="@style/Frag"
+    tools:context=".presentation.ui.fragments.list.ListQuote">
 
     <EditText
         android:id="@+id/edtQA"
         style="@style/Tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
         android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"
         android:hint="Find a quote"
         android:inputType="text"
         android:paddingVertical="15dp"
@@ -29,11 +28,11 @@
         android:id="@+id/rvQuotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="120dp"
         app:layout_constraintTop_toBottomOf="@+id/edtQA"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp" />
+         />
 
     <LinearLayout
         android:id="@+id/llAddQuote"

@@ -11,18 +11,18 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.quote.databinding.FragmentAddQuoteBinding
 import com.example.quote.domain.model.QuoteModel
-import com.example.quote.presentation.viewmodel.QuoteViewModel
+import com.example.quote.presentation.viewmodel.AddQuoteViewModel
+import com.example.quote.presentation.viewmodel.QuoteRandomViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AddQuote : Fragment() {
     private var _binding: FragmentAddQuoteBinding? = null
-    private val quoteViewModel: QuoteViewModel by viewModels()
+    private val quoteViewModel: AddQuoteViewModel by viewModels()
     private val binding get() = _binding!!
     private var idQuote = 0
     private var numberRowAffected = 0L
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class AddQuote : Fragment() {
     ): View? {
         _binding = FragmentAddQuoteBinding.inflate(inflater, container, false)
         binding.edtQoute.requestFocus()
-        showTV(false, false)
+        showTV(false, flagAuthor = false)
         sendData()
         return binding.root
     }
@@ -57,7 +57,6 @@ class AddQuote : Fragment() {
         clearFields()
     }
 
-
     private fun clearFields() {
         if (isCorrectInsertData()){
             binding.edtQoute.setText("")
@@ -79,10 +78,15 @@ class AddQuote : Fragment() {
         }
     }
 
-    private fun isCorrectInsertData() = numberRowAffected > 0
+    private fun isCorrectInsertData() = numberRowAffected != -1L
 
     private fun getStatusMessage(): String {
         return if(isCorrectInsertData())"Se agrego correctamente" else "Hubo un error al agregar"
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

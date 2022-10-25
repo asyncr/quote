@@ -9,8 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface QuoteDao {
-    //Inserta o actualiza un registro en la base de datos si ya existe
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun insert(quote: QuoteEntity):Long //Retorna el id del registro insertado
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

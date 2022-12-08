@@ -57,4 +57,12 @@ class QuoteRepositoryImpl @Inject constructor
     override suspend fun addQuote(quoteModel: QuoteModel) {
         return localDataSource.insert(quoteModel)
     }
+
+    override suspend fun deleteQuote(quoteId: Int) {
+        return localDataSource.deleteQuote(quoteId)
+    }
+
+    override suspend fun existQuote(quoteId: Int): Boolean {
+        return localDataSource.existQuote(quoteId)
+    }
 }

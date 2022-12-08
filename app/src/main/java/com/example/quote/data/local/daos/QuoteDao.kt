@@ -26,7 +26,11 @@ interface QuoteDao {
 
     @Query("DELETE FROM quote WHERE id=:quoteId ")
     suspend fun delete(quoteId: Int)
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateQuote(quote: QuoteEntity)
+
+    @Query("SELECT EXISTS(SELECT * FROM quote WHERE id = :quoteId)")
+    suspend fun existQuote(quoteId: Int): Boolean
 
 }

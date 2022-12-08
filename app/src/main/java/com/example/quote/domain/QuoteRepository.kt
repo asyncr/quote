@@ -10,4 +10,6 @@ interface QuoteRepository {
     suspend fun getQuote(quoteId:Int): Flow<QuoteModel>
     suspend fun editQuote(quoteModel: QuoteModel)
     suspend fun addQuote(quoteModel: QuoteModel)
+    suspend fun deleteQuote(quoteId: Int)
+    suspend fun existQuote(quoteId: Int): Boolean
 }

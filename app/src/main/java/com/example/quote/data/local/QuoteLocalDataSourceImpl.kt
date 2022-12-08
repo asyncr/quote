@@ -6,11 +6,15 @@ import com.example.quote.core.utils.toQuoteModel
 import com.example.quote.data.local.daos.QuoteDao
 import com.example.quote.data.remote.QuoteApiResponse
 import com.example.quote.domain.model.QuoteModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
-class QuoteLocalDataSourceImpl  @Inject constructor(private val quoteDao: QuoteDao): QuoteLocalDataSource {
+class QuoteLocalDataSourceImpl @Inject constructor(private val quoteDao: QuoteDao) :
+    QuoteLocalDataSource {
     override suspend fun getQuotes(): Flow<QuoteApiResponse> {
         val quotesEntity = quoteDao.getQuotes()
         val data = quotesEntity.map { it.toListQuoteModel() }
@@ -18,16 +22,16 @@ class QuoteLocalDataSourceImpl  @Inject constructor(private val quoteDao: QuoteD
         return flow { emit(QuoteApiResponse(true, "list quotes", quotesModel)) }
     }
 
-    override   fun getQuote(quoteId: Int): Flow<QuoteModel> {
-        return  quoteDao.getQuote(quoteId).map { it.toQuoteModel()}
+    override fun getQuote(quoteId: Int): Flow<QuoteModel> {
+        return quoteDao.getQuote(quoteId).map { it.toQuoteModel() }
     }
 
     override fun getQuoteRandom(): Flow<QuoteModel> {
-        return  quoteDao.getQuoteRandom().map { it.toQuoteModel() }
+        return quoteDao.getQuoteRandom().map { it.toQuoteModel() }
     }
 
     override suspend fun insertAll(quotes: List<QuoteModel>) {
-        quoteDao.insertAll(quotes.map { it.toEntity()})
+        quoteDao.insertAll(quotes.map { it.toEntity() })
     }
 
     override suspend fun insert(quoteModel: QuoteModel) {
@@ -36,5 +40,13 @@ class QuoteLocalDataSourceImpl  @Inject constructor(private val quoteDao: QuoteD
 
     override suspend fun editQuote(quoteModel: QuoteModel) {
         quoteDao.updateQuote(quoteModel.toEntity())
+    }
+
+    override suspend fun deleteQuote(quoteId: Int) {
+        quoteDao.delete(quoteId)
+    }
+
+    override suspend fun existQuote(quoteId: Int): Boolean {
+        return quoteDao.existQuote(quoteId)
     }
 }

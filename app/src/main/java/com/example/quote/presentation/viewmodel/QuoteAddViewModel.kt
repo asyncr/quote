@@ -14,8 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class QuoteAddViewModel
 @Inject constructor(private val addQuoteUseCase: AddQuoteUseCase) : ViewModel() {
-    private val quoteModelInitial =
-        QuoteModel(id = 0, quote = "Solo se que no se nada", author = "Socrates")
+    private val quoteModelInitial = QuoteModel(id = 0, quote = "Solo se que no se nada", author = "Socrates")
     private val _quoteEditMutableStateFlow = MutableStateFlow(quoteModelInitial)
     val quoteModel: StateFlow<QuoteModel> = _quoteEditMutableStateFlow
 

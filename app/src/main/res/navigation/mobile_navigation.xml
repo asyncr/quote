@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.quote.presentation.ui.fragments.random.FragmentQuoteRandom"
+        android:label="Quote"
+        tools:layout="@layout/fragment_quote_random" />
+    <fragment
+        android:id="@+id/nav_add"
+        android:name="com.example.quote.presentation.ui.fragments.add.QuoteAddFragment"
+        android:label="Add quote"
+        tools:layout="@layout/fragment_quote_add" />
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.example.quote.presentation.ui.fragments.list.QuoteListFragment"
+        android:label="Search quote "
+        tools:layout="@layout/fragment_quote_list" />
+    <fragment
+        android:id="@+id/nav_delete"
+        android:name="com.example.quote.presentation.ui.fragments.delete.QuoteDeleteFragment"
+        android:label="Delete quote"
+        tools:layout="@layout/fragment_quote_delete" />
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.quote.presentation.ui.fragments.login.Login"
+        android:label="Login"
+        tools:layout="@layout/fragment_login" />
+
+</navigation>

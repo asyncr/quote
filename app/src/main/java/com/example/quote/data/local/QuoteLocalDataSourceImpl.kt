@@ -4,40 +4,37 @@ import com.example.quote.core.utils.toEntity
 import com.example.quote.core.utils.toListQuoteModel
 import com.example.quote.core.utils.toQuoteModel
 import com.example.quote.data.local.daos.QuoteDao
+import com.example.quote.data.remote.QuoteApiResponse
 import com.example.quote.domain.model.QuoteModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-class QuoteLocalDataSourceImpl @Inject constructor(private val quoteDao: QuoteDao) :
-    QuoteLocalDataSource {
-    override fun getQuotes(): Flow<List<QuoteModel>> {
-        val quotes = quoteDao.getQuotes()
-        return quotes.map { it.toListQuoteModel() }
+
+class QuoteLocalDataSourceImpl  @Inject constructor(private val quoteDao: QuoteDao): QuoteLocalDataSource {
+    override suspend fun getQuotes(): Flow<QuoteApiResponse> {
+        val quotesEntity = quoteDao.getQuotes()
+        val data = quotesEntity.map { it.toListQuoteModel() }
+        val quotesModel = data.first()
+        return flow { emit(QuoteApiResponse(true, "list quotes", quotesModel)) }
     }
 
-    override fun getQuote(quoteId: Int): Flow<QuoteModel> {
-        return quoteDao.getQuote(quoteId).map { it.toQuoteModel() }
+    override   fun getQuote(quoteId: Int): Flow<QuoteModel> {
+        return  quoteDao.getQuote(quoteId).map { it.toQuoteModel()}
     }
 
     override fun getQuoteRandom(): Flow<QuoteModel> {
-        return quoteDao.getQuoteRandom().map { it!!.toQuoteModel() }
-    }
-
-    override suspend fun deleteQuote(id: Int):Int {
-        return quoteDao.delete(id)
+        return  quoteDao.getQuoteRandom().map { it.toQuoteModel() }
     }
 
     override suspend fun insertAll(quotes: List<QuoteModel>) {
-        quoteDao.insertAll(quotes!!.map { it.toEntity() })
+        quoteDao.insertAll(quotes.map { it.toEntity()})
     }
 
-    override suspend fun insert(quoteModel: QuoteModel):Long {
-        return quoteDao.insert(quoteModel.toEntity())
+    override suspend fun insert(quoteModel: QuoteModel) {
+        quoteDao.insert(quoteModel.toEntity())
     }
 
-    override suspend fun getLatestId(): Int {
-        return quoteDao.getLatestId()
+    override suspend fun editQuote(quoteModel: QuoteModel) {
+        quoteDao.updateQuote(quoteModel.toEntity())
     }
-
 }

@@ -1,5 +1,6 @@
 package com.example.quote.core.di
 
+
 import android.content.Context
 import com.example.quote.QuotesApp
 import dagger.Module
@@ -10,8 +11,12 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
+
 class ContextModule {
     @Provides
     @Singleton
-    fun provideContext(application: QuotesApp): Context? = application.applicationContext
+    fun provideContext(application: QuotesApp): Context {
+        return application.applicationContext
+    }
+
 }

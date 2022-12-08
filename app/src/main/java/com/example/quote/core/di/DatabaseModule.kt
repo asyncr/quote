@@ -1,5 +1,6 @@
 package com.example.quote.core.di
 
+
 import android.content.Context
 import com.example.quote.data.local.QuoteDB
 import com.example.quote.data.local.daos.QuoteDao
@@ -25,9 +26,7 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideGetDatabase(
-        @ApplicationContext appContext: Context,
-        scope: CoroutineScope
+    fun provideGetDatabase( @ApplicationContext appContext: Context, scope: CoroutineScope
     ): QuoteDB {
         return QuoteDB.getDatabase(appContext, scope)
     }

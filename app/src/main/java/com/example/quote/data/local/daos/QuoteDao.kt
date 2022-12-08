@@ -1,16 +1,13 @@
 package com.example.quote.data.local.daos
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.quote.data.local.entities.QuoteEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface QuoteDao {
-    @Insert
-    suspend fun insert(quote: QuoteEntity):Long //Retorna el id del registro insertado
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(quote: QuoteEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(quotes: List<QuoteEntity>)
@@ -28,8 +25,8 @@ interface QuoteDao {
     suspend fun deleteAll()
 
     @Query("DELETE FROM quote WHERE id=:quoteId ")
-    suspend fun delete(quoteId: Int): Int //Retorna el número de registros eliminados
+    suspend fun delete(quoteId: Int)
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateQuote(quote: QuoteEntity)
 
-    @Query("SELECT MAX(id) FROM quote")
-    suspend fun getLatestId(): Int
 }

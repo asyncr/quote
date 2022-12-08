@@ -8,27 +8,21 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="white_900">#F8F8F8</color>
-
-    <color name="dark_1">#17171A</color>
-    <color name="dark_2">#03010A</color>
-    <color name="dark_3">#222228</color>
-    <color name="dark_4">#2A2A2A</color>
-
-    <color name="red_900">#FF8492</color>
-
     <color name="blue_1">#6C84FA</color>
-
-
-    <color name="gray_1">#64607B</color>
-    <color name="gray_2">#A4A4AE</color>
-    <color name="gray_3">#9096A8</color>
-    <color name="gray_4">#687587</color>
-    <color name="gray_5">#C0C0CA</color>
-
     <color name="purple_900">#674DD5</color>
-    <color name="purple_699">#BCBCE1</color>
-    <color name="purple_799">#525298</color>
 
-    <color name="green_900">#65FFA7</color>
+    <!-- Base application theme -->
+    <color name="orange999">#F49D16</color>
+    <color name="black999">#34363C</color>
+    <color name="black990">#131416</color>
+    <color name="black909">#3A3A3A</color>
+    <color name="black800">#939292</color>
+    <!-- Text Light Mode -->
+    <color name="black888">#595959</color>
+    <color name="black880">#818181</color>
+    <!-- Text Dark Mode -->
+    <color name="black777">#EFF0F1</color>
+    <color name="black770">#CBCCD0</color>
+
+
 </resources>

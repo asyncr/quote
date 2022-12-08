@@ -1,59 +1,45 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Quote" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/dark_2</item>
-        <item name="colorPrimaryVariant">@color/dark_1</item>
+        <item name="colorPrimary">@color/orange999</item>
+        <item name="colorPrimaryVariant">@color/black909</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/black777</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/black999</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/dark_2</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="background">@color/dark_1</item>
-
-    </style>
-    <style name="Quote">
-        <item name="android:textColor">@color/purple_699</item>
-
-    </style>
-    <style name="Author">
-        <item name="android:textColor">@color/gray_2</item>
+        <item name="android:backgroundTint">?attr/colorPrimaryVariant</item>
     </style>
 
+
+    <style name="drawer_header" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:background">@color/black888</item>
+    </style>
     <style name="Card">
-        <item name="cardBackgroundColor">@color/dark_3</item>
+        <item name="android:backgroundTint">#68686C</item>
     </style>
-
-    <style name="floatingButton">
-        <item name="android:background">@drawable/button_dark</item>
-    </style>
-    <style name="Navw">
-        <item name="android:background">@color/dark_2</item>
-    </style>
-    <style name="Frag">
-        <item name="android:background">@color/dark_1</item>
-    </style>
-
-    <style name="btnAdd">
-        <item name="backgroundTint">@color/blue_1</item>
+    <style name="Button">
+        <item name="android:backgroundTint">@color/orange999</item>
         <item name="android:textColor">@color/white</item>
     </style>
-
-    <style name="Tv">
-        <item name="backgroundTint">#00FFFFFF</item>
-        <item name="android:textColor">@color/purple_699</item>
-        <item name="android:textColorHint">@color/gray_2</item>
+    <style name="Title">
+        <item name="android:textColor">@color/black777</item>
+    </style>
+    <style name="Subtitle">
+        <item name="android:textColor">@color/black770</item>
+    </style>
+    <style name="EditText">
+        <item name="android:backgroundTint">@color/black880</item>
+    </style>
+    <style name="Theme.Quote.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Drawer">
-        <item name="background">@color/dark_2</item>
-    </style>
-
-    <style name="StatusBar">
-        <item name="android:statusBarColor">@color/dark_2</item>
-    </style>
-
+    <style name="Theme.Quote.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Quote.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -7,5 +7,6 @@ import javax.inject.Inject
 class AddQuoteUseCase @Inject constructor(
     private val quoteRepository: QuoteRepository
 ) {
-    suspend fun addQuote(quoteModel: QuoteModel):Long = quoteRepository.addQuote(quoteModel)
+    suspend fun addQuote(quoteModel: QuoteModel) =
+        quoteRepository.addQuote(quoteModel)
 }

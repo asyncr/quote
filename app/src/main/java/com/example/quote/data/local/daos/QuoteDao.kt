@@ -16,7 +16,7 @@ interface QuoteDao {
     fun getQuotes(): Flow<List<QuoteEntity>>
 
     @Query("SELECT * FROM quote WHERE id = :quoteId")
-    fun getQuote(quoteId: Int): Flow<QuoteEntity>
+    fun getQuote(quoteId: Int): Flow<QuoteEntity?>
 
     @Query("SELECT * FROM quote ORDER BY random() LIMIT 1")
     fun getQuoteRandom(): Flow<QuoteEntity>
@@ -25,12 +25,9 @@ interface QuoteDao {
     suspend fun deleteAll()
 
     @Query("DELETE FROM quote WHERE id=:quoteId ")
-    suspend fun delete(quoteId: Int)
+    suspend fun delete(quoteId: Int): Int
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateQuote(quote: QuoteEntity)
-
-    @Query("SELECT EXISTS(SELECT * FROM quote WHERE id = :quoteId)")
-    suspend fun existQuote(quoteId: Int): Boolean
 
 }

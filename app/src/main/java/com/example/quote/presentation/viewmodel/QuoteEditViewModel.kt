@@ -21,7 +21,6 @@ class QuoteEditViewModel
 
 
     fun editQuote(quoteModel: QuoteModel) {
-
         viewModelScope.launch {
             editQuoteUseCase.editQuote(quoteModel = quoteModel)
         }

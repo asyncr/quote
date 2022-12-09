@@ -1,14 +1,9 @@
 package com.example.quote.presentation.ui.utils
 
-import android.app.Activity
 import android.content.Context
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import com.example.quote.R
 import com.example.quote.domain.model.QuoteModel
-import com.example.quote.presentation.view.MainActivity
 
 class Utils {
     companion object {
@@ -47,6 +42,16 @@ class Utils {
             return "ID: ${quote.id} \nCita: ${quote.quote} \nAutor: ${quote.author}"
         }
 
+        fun tempAlert(cont:Context, title:String,msg:String):AlertDialog{
+            val builder = AlertDialog.Builder(cont)
+            builder.setTitle(title)
+            builder.setMessage(msg)
+            builder.setPositiveButton("OK"){dialog, which ->
+                dialog.dismiss()
+            }
+            return builder.create()
+        }
+
 
 
 
@@ -55,14 +60,20 @@ class Utils {
     }
 }
 
-enum class CustomMessages(val message: String) {
+enum class Messages(val message: String) {
     INVALID_ID("Ingresa un id valido"),
     INVALID_QUOTE("Ingresa una cita valida"),
     INVALID_AUTHOR("Ingresa un autor valido"),
     INVALID_USERNAME("Usuario no valido"),
     INVALID_PASSWORD("Contraseña incorrecta"),
     ERROR_NETWORK("Error de red"),
+    ERROR_SERVER("Error del servidor"),
+    QUOTE_NOT_EXIST("La cita no existe"),
+    QUOTE_NOT_DELETED("La cita no se pudo eliminar"),
+    QUOTE_DELETED("La cita se elimino correctamente"),
     QUOTE_SAVED("Cita agregada"),
     LOGIN_SUCCESS("Login exitoso"),
     CONFIRM_SAVE("¿Deseas guardar los cambios?"),
+    CONFIRM_DELETE("¿Deseas eliminar la cita?"),
+    TOKEN_NOT_FOUND("Token no encontrado"),
 }

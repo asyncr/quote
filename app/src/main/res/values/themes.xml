@@ -34,6 +34,9 @@
     <style name="EditText">
         <item name="android:backgroundTint">@color/black880</item>
     </style>
+    <style name="Icon">
+        <item name="android:background">@color/black999</item>
+    </style>
 
     <style name="Theme.Quote.NoActionBar">
         <item name="windowActionBar">false</item>

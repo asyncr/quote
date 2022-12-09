@@ -48,7 +48,7 @@
             android:layout_margin="30dp"
             android:paddingHorizontal="25dp"
             android:paddingVertical="10dp"
-            android:text="Agregar"
+            android:text="Eliminar"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

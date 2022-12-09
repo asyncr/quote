@@ -5,7 +5,5 @@ import com.example.quote.domain.model.QuoteModel
 import javax.inject.Inject
 
 class EditQuoteUseCase @Inject constructor(private val quoteRepository: QuoteRepository) {
-    suspend fun editQuote(quoteModel: QuoteModel) =
-        quoteRepository.editQuote(quoteModel)
-
+    suspend fun editQuote(quoteModel: QuoteModel) = quoteRepository.editQuote(quoteModel)
 }

@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.quote.databinding.FragmentQuoteAddBinding
 import com.example.quote.domain.model.QuoteModel
-import com.example.quote.presentation.ui.utils.CustomMessages
+import com.example.quote.presentation.ui.utils.Messages
 import com.example.quote.presentation.ui.utils.Utils
 import com.example.quote.presentation.viewmodel.QuoteAddViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,15 +41,15 @@ class QuoteAddFragment : Fragment() {
         with(binding) {
             when {
                 Utils.isValidNumberField(edtId).not() -> {
-                    showMessage(CustomMessages.INVALID_ID.message)
+                    showMessage(Messages.INVALID_ID.message)
                     return@process
                 }
                 Utils.isValidField(edtQuote).not() -> {
-                    showMessage(CustomMessages.INVALID_QUOTE.message)
+                    showMessage(Messages.INVALID_QUOTE.message)
                     return@process
                 }
                 Utils.isValidField(edtAuthor).not() -> {
-                    showMessage(CustomMessages.INVALID_AUTHOR.message)
+                    showMessage(Messages.INVALID_AUTHOR.message)
                     return@process
                 }
                 else -> save()
@@ -60,12 +60,11 @@ class QuoteAddFragment : Fragment() {
     private fun save() {
         val quoteModel = createQuote()
         val data = Utils.quoteToString(quoteModel)
-        val confirm = Utils.showAlert(requireContext(), CustomMessages.CONFIRM_SAVE.message, data)
+        val confirm = Utils.showAlert(requireContext(), Messages.CONFIRM_SAVE.message, data)
         confirm.setButton(AlertDialog.BUTTON_POSITIVE, "Si") { dialog, _ ->
             saveQuote(quoteModel)
             dialog.dismiss()
-            //showMessage(CustomMessages.QUOTE_SAVED.message)
-
+            //showMessage(Messages.QUOTE_SAVED.message)
             cleanFields()
         }
         confirm.setButton(AlertDialog.BUTTON_NEGATIVE, "No") { dialog, _ -> dialog.dismiss() }

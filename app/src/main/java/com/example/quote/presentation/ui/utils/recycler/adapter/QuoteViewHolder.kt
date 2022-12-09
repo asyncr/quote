@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.quote.R
 import com.example.quote.databinding.QuoteItemBinding
 import com.example.quote.domain.model.QuoteModel
+import com.example.quote.presentation.ui.utils.recycler.adapter.QuoteEditClickListener
+import com.example.quote.presentation.ui.utils.recycler.adapter.QuoteDeleteClickListener
 
 class QuoteViewHolder(
     private val binding: QuoteItemBinding,
-    private val onAction: (Action) -> Unit,
-    private val onClic: (Onclick) -> Unit
+    private val editQuote: QuoteEditClickListener,
+    private val deleteQuote: QuoteDeleteClickListener
 ) :
     RecyclerView.ViewHolder(binding.root) {
 
@@ -30,10 +32,10 @@ class QuoteViewHolder(
                 cardQuote.animation = scale
             }
             imgDelete.setOnClickListener {
-                onAction(Action.Delete(quote))
+                deleteQuote.onClickDelete(quote.id)
             }
             imgEdit.setOnClickListener {
-                onClic(Onclick.Edit(quote))
+                editQuote.onClickEdit(quote)
             }
         }
     }

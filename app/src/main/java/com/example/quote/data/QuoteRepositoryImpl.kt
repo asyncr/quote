@@ -22,7 +22,7 @@ class QuoteRepositoryImpl @Inject constructor
         return  localDataSource.getQuoteRandom()
     }
 
-    override suspend fun getQuote(quoteId: Int): Flow<QuoteModel> {
+    override suspend fun getQuote(quoteId: Int): Flow<QuoteModel?> {
         return localDataSource.getQuote(quoteId)
     }
 /*
@@ -50,6 +50,7 @@ class QuoteRepositoryImpl @Inject constructor
         return (remoteQuotes ?: localQuotes)
     }
 
+
     override suspend fun editQuote(quoteModel: QuoteModel) {
         return localDataSource.editQuote(quoteModel)
     }
@@ -58,11 +59,7 @@ class QuoteRepositoryImpl @Inject constructor
         return localDataSource.insert(quoteModel)
     }
 
-    override suspend fun deleteQuote(quoteId: Int) {
+    override suspend fun deleteQuote(quoteId: Int): Int {
         return localDataSource.deleteQuote(quoteId)
-    }
-
-    override suspend fun existQuote(quoteId: Int): Boolean {
-        return localDataSource.existQuote(quoteId)
     }
 }
